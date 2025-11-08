@@ -1,12 +1,12 @@
 # Copyright (c) OpenMMLab. All rights reserved.
 from typing import Any, Dict, Optional, Union
+from importlib.metadata import version
 
 import numpy as np
 import torch
 
 from mmengine.registry import HOOKS
 from mmengine.utils import get_git_hash
-from mmengine.version import __version__
 from .hook import Hook
 
 DATA_BATCH = Optional[Union[dict, tuple, list]]
@@ -51,7 +51,7 @@ class RuntimeInfoHook(Hook):
             cfg=runner.cfg.pretty_text,
             seed=runner.seed,
             experiment_name=runner.experiment_name,
-            mmengine_version=__version__ + get_git_hash())
+            mmengine_version=version("mmengine") + get_git_hash())
         runner.message_hub.update_info_dict(metainfo)
 
         self.last_loop_stage = None

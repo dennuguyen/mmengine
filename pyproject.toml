@@ -1,0 +1,77 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mmengine"
+version = "0.11.0"
+description = "Engine of OpenMMLab projects"
+readme = { file = "README.md", content-type = "text/markdown" }
+requires-python = ">=3.13"
+license = { text = "Apache-2.0" }
+authors = [
+    { name = "MMEngine Authors", email = "openmmlab@gmail.com" }
+]
+keywords = ["openmmlab", "deep learning", "training", "computer vision"]
+urls = { Homepage = "https://github.com/open-mmlab/mmengine" }
+
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Utilities",
+]
+
+# Default runtime dependencies
+dependencies = [
+    "addict",
+    "matplotlib",
+    "numpy",
+    "pyyaml",
+    "regex; sys_platform == 'win32'",
+    "rich",
+    "termcolor",
+    "yapf",
+]
+
+[project.optional-dependencies]
+tests = [
+    "aim<=3.17.5; sys_platform != 'win32'",
+    "bitsandbytes",
+    "clearml",
+    "coverage",
+    "dadaptation",
+    "dvclive",
+    "lion-pytorch",
+    "lmdb",
+    "mlflow",
+    "parameterized",
+    "pydantic==1.10.9",
+    "pytest",
+    "transformers",
+]
+runtime_lite = [
+    "addict",
+    "numpy",
+    "opencv-python-headless",
+    "pyyaml",
+    "regex; sys_platform == 'win32'",
+    "rich",
+    "termcolor",
+    "yapf",
+]
+tests_lite = [
+    "lmdb",
+    "parameterized",
+    "pytest",
+]
+
+[tool.setuptools]
+include-package-data = true
+zip-safe = false
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["mmengine*"]

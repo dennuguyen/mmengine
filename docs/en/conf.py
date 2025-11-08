@@ -10,6 +10,9 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
+
+from importlib.metadata import version
+
 import os
 import sys
 
@@ -22,15 +25,7 @@ sys.path.insert(0, os.path.abspath('../..'))
 project = 'mmengine'
 copyright = '2022, mmengine contributors'
 author = 'mmengine contributors'
-
-version_file = '../../mmengine/version.py'
-with open(version_file) as f:
-    exec(compile(f.read(), version_file, 'exec'))
-__version__ = locals()['__version__']
-# The short X.Y version
-version = __version__
-# The full version, including alpha/beta/rc tags
-release = __version__
+release = version("mmpose")
 
 # -- General configuration ---------------------------------------------------
 
